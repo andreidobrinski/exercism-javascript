@@ -11,11 +11,9 @@ const COLORS = [
   "white",
 ];
 
-const colorCode = color => COLORS.indexOf(color);
-
 export const value = colors => {
-  const firstNumber = colorCode(colors[0]);
-  const secondNumber = colorCode(colors[1]);
+  const firstNumber = COLORS.indexOf(colors[0]);
+  const secondNumber = COLORS.indexOf(colors[1]);
   const stringValue = `${firstNumber}${secondNumber}`;
   return Number(stringValue);
 };
