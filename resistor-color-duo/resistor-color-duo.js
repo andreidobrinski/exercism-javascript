@@ -12,8 +12,6 @@ const COLORS = [
 ];
 
 export const value = colors => {
-  const firstNumber = COLORS.indexOf(colors[0]);
-  const secondNumber = COLORS.indexOf(colors[1]);
-  const stringValue = `${firstNumber}${secondNumber}`;
+  const stringValue = colors.map(color => COLORS.indexOf(color)).join('');
   return Number(stringValue);
 };
