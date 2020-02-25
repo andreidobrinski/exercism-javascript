@@ -1,7 +1,7 @@
 export const encode = input => {
   if (input === '') return '';
 
-  let inputArray = input.split('');
+  const inputArray = input.split('');
   let temp = {
     letter: null,
     count: 1,
@@ -36,6 +36,28 @@ export const encode = input => {
   return output;
 };
 
-export const decode = () => {
-  throw new Error("Remove this statement and implement this function");
+export const decode = input => {
+  if (input === '') return '';
+
+  const inputArray = input.split('');
+
+  let tempNumber = [];
+  let outputArray = [];
+
+  for (let element of inputArray) {
+    const parsedElement = parseInt(element);
+    if (!isNaN(parsedElement)) {
+      tempNumber.push(parsedElement);
+      continue;
+    }
+    if (tempNumber.length) {
+      const repeats = parseInt(tempNumber.join(''));
+      outputArray.push(element.repeat(repeats));
+      tempNumber = [];
+      continue;
+    }
+    outputArray.push(element);
+  }
+
+  return outputArray.join('');
 };
