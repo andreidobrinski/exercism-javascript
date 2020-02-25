@@ -46,7 +46,7 @@ export const decode = input => {
 
   for (let element of inputArray) {
     const parsedElement = parseInt(element);
-    if (!isNaN(parsedElement)) {
+    if (Number.isInteger(parsedElement)) {
       tempNumber.push(parsedElement);
       continue;
     }
