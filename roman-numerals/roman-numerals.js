@@ -39,31 +39,29 @@ const convertDigit = (input, key) => {
   if (input === 9) return `${key.one}${key.ten}`;
 };
 
+const getConversionKey = arrayLength => {
+  switch (arrayLength) {
+    case 3:
+      return hundredsConversion;
+    case 2:
+      return tensConversion;
+    case 1:
+      return onesConversion;
+  }
+}
+
 export const toRoman = input => {
   let output = [];
   const stringArray = input.toString().split('');
 
-  if (stringArray.length === 4) {
+  while (stringArray.length) {
     const number = parseInt(stringArray[0]);
-    output.push('M'.repeat(number));
-    stringArray.shift();
-  }
-
-  if (stringArray.length === 3) {
-    const number = parseInt(stringArray[0]);
-    output.push(convertDigit(number, hundredsConversion));
-    stringArray.shift();
-  }
-
-  if (stringArray.length === 2) {
-    const number = parseInt(stringArray[0]);
-    output.push(convertDigit(number, tensConversion));
-    stringArray.shift();
-  }
-
-  if (stringArray.length === 1) {
-    const number = parseInt(stringArray[0]);
-    output.push(convertDigit(number, onesConversion));
+    if (stringArray.length === 4) {
+      output.push('M'.repeat(number));
+      stringArray.shift();
+      continue;
+    }
+    output.push(convertDigit(number, getConversionKey(stringArray.length)));
     stringArray.shift();
   }
 
