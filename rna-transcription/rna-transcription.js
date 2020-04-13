@@ -5,8 +5,7 @@ const conversion = {
   A: 'U',
 };
 
-export const toRna = (input) => {
-  const split = input.split('');
-  const rnaArray = split.map(nucleotide => conversion[nucleotide]);
-  return rnaArray.join('');
-};
+export const toRna = input =>
+  [...input]
+    .map(nucleotide => conversion[nucleotide])
+    .join('');
