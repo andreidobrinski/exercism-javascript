@@ -13,5 +13,5 @@ const ORBIT_MULTIPLIER = {
 
 export const age = (planet, ageInSeconds) => {
   const orbitLength = ORBIT_MULTIPLIER[planet] * EARTH_YEAR_IN_SECONDS;
-  return parseFloat((ageInSeconds / orbitLength).toFixed(2));
+  return Number((ageInSeconds / orbitLength).toFixed(2));
 };
